@@ -1,21 +1,47 @@
+
 var swiper = new Swiper('.rev__slider', {
 	loop: true,
-	spaceBetween: 20,
+	spaceBetween: 100,
 	grabCursor: true,
 	autoHeight: true,
 	simulateTouch: true,
 	centeredSlides: true,
-	slidesPerView: 3,
+	slidesPerView: 1,
 	speed: 600,
 	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
+		nextEl: '.rev__slider-next',
+		prevEl: '.rev__slider-prev',
+	},
+	pagination: {
+		el: '.swiper-pagination',
+	},
+	breakpoints: {
+
+		768: {
+			slidesPerView: 3,
+			spaceBetween: 20,
+		},
+
+	}
+
+})
+
+var swiper = new Swiper('.book', {
+	loop: true,
+	spaceBetween: 1000,
+	slidesPerView: 1,
+	speed: 0,
+	navigation: {
+		nextEl: '.book__slider-next',
+		prevEl: '.book__slider-prev',
 	},
 	pagination: {
 		el: '.swiper-pagination',
 	},
 
 })
+
+
 const links = document.querySelectorAll("a.scroll-to");
 
 for (const link of links) {
@@ -33,6 +59,25 @@ function clickHandler(e) {
 	});
 }
 
+let more = function (btn, inner, textOne, textTwo) {
+	btn.onclick = function () {
+		console.log(123);
+		if (btn.innerText == textOne) {
+			btn.innerText = textTwo;
+		} else {
+			btn.innerText = textOne;
+		}
+		inner.classList.toggle("active");
+	};
+}
+
+let dopBtn = document.querySelector('.dop__btn a');
+let dopInner = document.querySelector('.dop__inner');
+
+more(dopBtn, dopInner, "ОТКРЫТЬ", "СКРЫТЬ");
+
+
+
 let qus = document.querySelectorAll('.qustions__item-plus')
 
 qus.forEach(function (el) {
@@ -41,6 +86,36 @@ qus.forEach(function (el) {
 		el.previousElementSibling.classList.toggle("active");
 	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
