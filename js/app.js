@@ -27,9 +27,10 @@ var swiper = new Swiper('.rev__slider', {
 })
 
 var swiper = new Swiper('.book', {
-	loop: true,
-	spaceBetween: 1000,
+	spaceBetween: 100,
 	slidesPerView: 1,
+	autoHeight: true,
+	simulateTouch: false,
 	speed: 0,
 	navigation: {
 		nextEl: '.book__slider-next',
@@ -37,7 +38,16 @@ var swiper = new Swiper('.book', {
 	},
 	pagination: {
 		el: '.swiper-pagination',
+
 	},
+	breakpoints: {
+
+		768: {
+			slidesPerView: 2,
+			spaceBetween: 30,
+		},
+
+	}
 
 })
 
@@ -88,6 +98,57 @@ qus.forEach(function (el) {
 });
 
 
+
+burger = document.querySelector('.header__burger');
+menu = document.querySelector('.header__nav');
+
+dark = document.querySelector('.bg-mob');
+
+burger.onclick = function () {
+	burger.classList.toggle('active');
+	dark.classList.toggle('active');
+	menu.classList.toggle('active');
+}
+
+
+
+
+const animItems = document.querySelectorAll('._anim-items');
+
+if (animItems.length > 0) {
+	window.addEventListener('scroll', animOnScroll);
+	function animOnScroll() {
+		for (let index = 0; index < animItems.length; index++) {
+			const animItem = animItems[index];
+			const animItemHeight = animItem.offsetHeight;
+			const animItemOffset = offset(animItem).top;
+			const animStart = 10;
+
+			let animItemPoint = window.innerHeight - animItemHeight / animStart;
+			if (animItemHeight > window.innerHeight) {
+				animItemPoint = window.innerHeight - window.innerHeight / animStart;
+			}
+
+			if ((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)) {
+				animItem.classList.add('_active');
+			} else {
+				if (!animItem.classList.contains('_anim-no-hide')) {
+					animItem.classList.remove('_active');
+				}
+			}
+		}
+	}
+	function offset(el) {
+		const rect = el.getBoundingClientRect(),
+			scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+			scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+	}
+
+	setTimeout(() => {
+		animOnScroll();
+	}, 300);
+}
 
 
 
