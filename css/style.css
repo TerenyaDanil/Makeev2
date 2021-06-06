@@ -2676,9 +2676,6 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
@@ -3076,7 +3073,7 @@ body {
   }
 
   .what__content {
-    padding: 0rem 2rem 33rem 2rem;
+    padding: 0rem 2rem 355px 2rem;
   }
 
   .what__title {
