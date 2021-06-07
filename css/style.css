@@ -137,6 +137,10 @@ body {
   color: #26262e;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .wrapper {
   width: 100%;
   min-height: 100%;
@@ -399,6 +403,72 @@ body {
       -ms-transform: translate(0px, 0);
           transform: translate(0px, 0);
   opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  z-index: 100;
+}
+
+.popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 30px 10px;
+  -webkit-transition: all 0.8s ease 0s;
+  -o-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
+}
+
+.popup__content {
+  background: #fff;
+  border: 2px solid #ff5715;
+  border-radius: 15px;
+  max-width: 100%;
+  padding: 80px 10px 10px;
+  position: relative;
+  -webkit-transition: all 0.8s ease 0s;
+  -o-transition: all 0.8s ease 0s;
+  transition: all 0.8s ease 0s;
+  text-align: center;
+}
+
+.popup__close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  font-size: 20px;
+  color: #000;
+  text-decoration: none;
+}
+
+.popup__video iframe {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .header__content {
@@ -1329,7 +1399,6 @@ body {
 
 .book {
   position: relative;
-  margin: 0rem 0rem 10rem 0rem;
   padding: 0rem 0rem 15rem 0rem;
 }
 
@@ -1376,7 +1445,7 @@ body {
 
 .book__bg {
   position: absolute;
-  top: 43%;
+  top: 39rem;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
@@ -1435,10 +1504,10 @@ body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 33rem;
+  width: 81rem;
   position: absolute;
   left: 50.7%;
-  bottom: -5%;
+  bottom: -4.4%;
   -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
@@ -1448,13 +1517,13 @@ body {
   font-family: DrukWide;
   text-transform: uppercase;
   color: #fff;
-  font-size: 4rem;
+  font-size: 2.6rem;
 }
 
 .book__slider-prev {
   color: transparent;
-  top: 40%;
-  left: -10% !important;
+  top: 39%;
+  left: -13% !important;
   width: 9rem;
   height: 9rem;
   display: -webkit-box;
@@ -1476,7 +1545,7 @@ body {
 
 .book__slider-next {
   color: transparent;
-  top: 40%;
+  top: 39%;
   right: -13% !important;
   width: 9rem;
   height: 9rem;
@@ -1498,14 +1567,15 @@ body {
 }
 
 .book-pagination {
-  bottom: -4rem !important;
+  bottom: 11rem !important;
   z-index: -10;
 }
 
 .book-pagination .swiper-pagination-bullet {
-  width: 10rem !important;
-  height: 18rem !important;
+  width: 6rem !important;
+  height: 10rem !important;
   border: 0rem !important;
+  margin: 0 0.7rem !important;
   background-color: #2b2b35 !important;
   opacity: 0.8 !important;
 }
@@ -1517,6 +1587,7 @@ body {
 
 .book-inner__item {
   padding: 0rem 2rem;
+  min-height: 85rem;
 }
 
 .book-inner__item.swiper-slide-next {
@@ -1529,14 +1600,14 @@ body {
 
 .book-inner__title {
   position: relative;
-  font-size: 3rem;
+  font-size: 2.8rem;
   padding: 0rem 0rem 1rem 0rem;
   margin: 0rem 0rem 1rem 0rem;
 }
 
 .book-inner__title span {
   display: block;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   margin: 0rem 0rem 0.3em 0rem;
 }
 
@@ -1550,15 +1621,25 @@ body {
   background: #26262e;
 }
 
+.book-inner__speak {
+  font-size: 2rem;
+  margin: 1rem 0px 0px 0px;
+}
+
+.book-inner__name {
+  font-size: 2rem;
+  color: #ff5715;
+}
+
 .book-inner__text {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.3;
   margin: 0rem 0rem 1.5rem 0rem;
 }
 
 .book-inner__res {
   position: relative;
-  font-size: 3rem;
+  font-size: 2.8rem;
   padding: 0rem 0rem 1rem 0rem;
   margin: 0rem 0rem 1rem 0rem;
 }
@@ -1596,6 +1677,7 @@ body {
 .book-inner__star {
   margin: 0rem 0rem 4rem 0rem;
   font-size: 1.8rem;
+  line-height: 1.3;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2163,7 +2245,8 @@ body {
 }
 
 .cases__bg img {
-  max-width: 192rem;
+  width: 192rem;
+  height: 345rem;
 }
 
 .cases__bg-mob {
@@ -2191,6 +2274,23 @@ body {
   position: absolute;
   right: -8rem;
   top: 2rem;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inner-cases__img img {
+  overflow: hidden;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .inner-cases__name {
@@ -2345,16 +2445,32 @@ body {
 }
 
 .inner-tarif__item {
-  font-size: 2.2rem;
+  position: relative;
+  font-size: 2.6rem;
   line-height: 1.3;
   margin: 0rem 0rem 0.5em 0rem;
 }
 
+.inner-tarif__item span {
+  font-size: 2.2rem;
+  display: block;
+}
+
 .inner-tarif__item:before {
-  font-size: 2rem;
+  font-size: 2.6rem;
   content: counter(item) ".";
   counter-increment: item;
   color: #ff4800;
+}
+
+.inner-tarif__item-hide {
+  text-decoration: line-through;
+}
+
+.inner-tarif__stop {
+  font-size: 2.6rem;
+  line-height: 1.3;
+  margin: 0rem 0rem 0.5em 0rem;
 }
 
 .inner-tarif__price {
@@ -2373,9 +2489,11 @@ body {
   padding: 2rem 0rem 0rem 0rem;
   position: relative;
   font-size: 4.5rem;
+  color: #ff5715;
 }
 
 .inner-tarif__price-title span {
+  color: #343440;
   position: absolute;
   top: -10%;
   left: 0;
@@ -2384,6 +2502,24 @@ body {
   color: inherit;
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.inner-tarif__price-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.inner-tarif__price-btn a + a {
+  margin: 2rem 0rem 0rem 0rem;
+  font-size: 1.4rem;
 }
 
 .inner-tarif-pr .inner-tarif__title {
@@ -2418,7 +2554,7 @@ body {
   position: absolute;
   max-width: 10rem;
   left: 10rem;
-  bottom: -2rem;
+  bottom: -4rem;
   z-index: 10;
 }
 
@@ -2665,6 +2801,16 @@ body {
 @media (max-width: 767.98px) {
   html {
     font-size: 10px;
+  }
+
+  .popup__close {
+    font-size: 30px;
+    top: 20px;
+    right: auto;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
   }
 
   .header__content {
@@ -2948,6 +3094,10 @@ body {
     right: 0;
   }
 
+  .rev__content {
+    padding: 0px 1rem 14rem;
+  }
+
   .rev__title img {
     max-width: 5rem;
     margin: 0rem 0rem 2rem 0rem;
@@ -3209,7 +3359,7 @@ body {
     font-size: 3rem;
     line-height: 1.3;
     text-align: center;
-    margin: 0rem 0rem 4rem 0rem;
+    margin: 0rem 0rem 3rem 0rem;
   }
 
   .book__bg {
@@ -3248,11 +3398,13 @@ body {
   .book-inner__item {
     background-color: #343440;
     padding: 2rem 2rem;
+    min-height: 75rem;
     border-radius: 0.7rem;
   }
 
   .book-inner__title span {
     font-size: 2rem;
+    margin: 0rem 0rem 0.5em 0rem;
   }
 
   .book-inner__title::after {
@@ -3267,6 +3419,8 @@ body {
   .book-inner__title {
     color: #fff;
     font-size: 2.2rem;
+    padding: 0rem 0rem 2rem 0rem;
+    margin: 0rem 0rem 2rem 0rem;
   }
 
   .book-inner__text {
@@ -3284,6 +3438,8 @@ body {
 
   .book-inner__res {
     font-size: 2rem;
+    padding: 0rem 0rem 2rem 0rem;
+    margin: 0rem 0rem 2rem 0rem;
   }
 
   .book-inner__dop-item span {
@@ -3311,6 +3467,16 @@ body {
 
   .book-inner__btn a {
     font-size: 0.8rem;
+  }
+
+  .book-inner__btn {
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .dop {
@@ -3408,6 +3574,7 @@ body {
 
   .inner-speak__text {
     font-size: 1.6rem;
+    text-align: left;
   }
 
   .invite__content {
@@ -3544,7 +3711,7 @@ body {
     display: block;
     position: absolute;
     left: 50%;
-    top: -3%;
+    top: -1.5%;
     -webkit-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
@@ -3553,7 +3720,7 @@ body {
 
   .cases__bg-mob img {
     width: 45rem;
-    height: 436rem;
+    height: 606rem;
   }
 
   .cases__bg {
@@ -3563,7 +3730,7 @@ body {
   .inner-cases__item {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
-    padding: 7.4rem 3rem 2.3rem 3rem;
+    padding: 10.4rem 3rem 2.3rem 3rem;
     text-align: center;
     margin: 0rem 0rem 15rem 0rem;
     display: -webkit-box;
@@ -3587,7 +3754,7 @@ body {
     height: 15.3rem;
     right: auto;
     left: 50%;
-    top: -10rem;
+    top: -7.5rem;
     -webkit-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
@@ -3632,6 +3799,7 @@ body {
   }
 
   .inner-cases__point-item {
+    margin: 0rem 0rem 3rem 0rem;
     font-size: 1.4rem;
   }
 
@@ -3653,6 +3821,11 @@ body {
 
   .tarif__title {
     font-size: 3rem;
+    margin: 0rem 0rem 2.8em 0rem;
+  }
+
+  .tarif__inner {
+    margin: 0rem 0rem 10rem 0rem;
   }
 
   .inner-tarif__title {
@@ -3662,7 +3835,7 @@ body {
   .inner-tarif__list {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    padding: 2rem 2.2rem 2rem;
+    padding: 4rem 2.2rem 2rem;
   }
 
   .inner-tarif__wrap {
@@ -3670,8 +3843,23 @@ body {
         flex-basis: 100%;
   }
 
-  .inner-tarif__item {
+  .inner-tarif__item span {
     font-size: 1.6rem;
+    margin: 0.5rem 0px 0px 0px;
+  }
+
+  .inner-tarif__item:before {
+    font-size: 2rem;
+  }
+
+  .inner-tarif__item {
+    font-size: 2rem;
+    margin: 0rem 0rem 1em 0rem;
+  }
+
+  .inner-tarif__stop {
+    font-size: 1.8rem;
+    margin: 0rem 0rem 1em 0rem;
   }
 
   .inner-tarif__price {
@@ -3683,7 +3871,7 @@ body {
   }
 
   .inner-tarif__price-title span {
-    font-size: 1.5rem;
+    font-size: 2rem;
     left: 50%;
     -webkit-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
@@ -3691,12 +3879,16 @@ body {
   }
 
   .inner-tarif__price-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin: 0rem 0rem 2rem 0rem;
   }
 
+  .inner-tarif__price-btn a + a {
+    font-size: 1.2rem;
+  }
+
   .inner-tarif__price-btn a {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .inner-tarif-pr .inner-tarif__title {
